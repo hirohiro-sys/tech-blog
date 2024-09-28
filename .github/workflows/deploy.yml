@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_CLI_EXPERIMENTS: webframeworks
+
 
     steps:
       - name: Checkout code
@@ -32,8 +34,8 @@ jobs:
       - name: Install firebase-tools
         run: npm install --save-dev firebase-tools
 
-      - name: Enable web frameworks experiment
-        run: npx firebase experiments:enable webframeworks
+      # - name: Enable web frameworks experiment
+      #   run: npx firebase experiments:enable webframeworks
 
       - name: Deploy to Firebase
         run: npx firebase deploy --only hosting
