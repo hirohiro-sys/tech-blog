@@ -36,6 +36,4 @@ jobs:
         run: npx firebase experiments:enable webframeworks
 
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
+        run: npx firebase deploy --only hosting
