@@ -8,6 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,12 +26,16 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Run tests
+        run: npm test
+
       - name: Install firebase-tools
         run: npm install --save-dev firebase-tools
+
+      - name: Enable web frameworks experiment
+        run: npx firebase experiments:enable webframeworks
 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
