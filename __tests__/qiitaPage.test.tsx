@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import QiitaPage from '/Users/katohirokazu/Desktop/tech-blog/tech-blog-app/app/components/qiitaPage';
+import QiitaPage from '../app/components/qiitaPage';
 
 describe('QiitaPageのテスト', () => {
   const mockData = [
