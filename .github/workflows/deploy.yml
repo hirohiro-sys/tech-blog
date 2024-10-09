@@ -38,6 +38,7 @@ jobs:
         run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $HOME/gcloud-key.json
         env:
           GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud-key.json
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Deploy to Firebase
         run: npx firebase deploy --only hosting
