@@ -9,11 +9,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       SERVICE_DOMAIN: ${{ secrets.SERVICE_DOMAIN }}
       API_KEY: ${{ secrets.API_KEY }}
       FIREBASE_CLI_EXPERIMENTS: webframeworks
-
 
     steps:
       - name: Checkout code
@@ -36,8 +34,12 @@ jobs:
       - name: Install firebase-tools
         run: npm install --save-dev firebase-tools
 
-      # - name: Enable web frameworks experiment
-      #   run: npx firebase experiments:enable webframeworks
+      - name: Set up Google credentials
+        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $HOME/gcloud-key.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud-key.json
 
       - name: Deploy to Firebase
         run: npx firebase deploy --only hosting
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud-key.json
