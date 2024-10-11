@@ -4,8 +4,6 @@ export const client = createClient({
     serviceDomain: process.env.SERVICE_DOMAIN,
     apiKey: process.env.API_KEY,
 });
-// console.log("Service Domain:", process.env.SERVICE_DOMAIN);
-// console.log("API Key:", process.env.API_KEY);
 
 export const getBlogs = async (limit?: number) => {
 
@@ -38,9 +36,6 @@ export const getBlogs = async (limit?: number) => {
   export const getDetail = async (contentId: string) => {
     const blog = await client.getListDetail({
         endpoint: "blogs",
-  //       customRequestInit: {
-  //         cache: "no-store",
-  // },
         contentId,
     });
     
