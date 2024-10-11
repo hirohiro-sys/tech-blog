@@ -2,7 +2,8 @@ import MicrocmsPage from "./components/microcmsPage";
 import QiitaPage from "./components/qiitaPage";
 
 export default async function Page() {
-  const res = await fetch(`http://localhost:3000/api/qiita`, { cache: "no-store" });
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${API_URL}/api/qiita`, { cache: "no-store" });
   const data = await res.json();
 
   return (
