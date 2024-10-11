@@ -13,9 +13,9 @@ export const getBlogs = async (limit?: number) => {
 
   const blogs = await client.getList({
     endpoint: "blogs",
-    customRequestInit: {
-            cache: "no-store",
-    },
+    // customRequestInit: {
+    //         cache: "no-store",
+    // },
     queries,
   });
 
@@ -38,9 +38,9 @@ export const getBlogs = async (limit?: number) => {
   export const getDetail = async (contentId: string) => {
     const blog = await client.getListDetail({
         endpoint: "blogs",
-        customRequestInit: {
-          cache: "no-store",
-  },
+  //       customRequestInit: {
+  //         cache: "no-store",
+  // },
         contentId,
     });
     
