@@ -6,7 +6,7 @@ const MicrocmsPage = async () => {
   const { contents } = await getBlogs(4);
   // console.log(contents);
   return (
-    <>
+    <div className="px-4">
       <div className="flex items-center justify-between mb-5">
         <h1 className="text-2xl font-bold">ブログ記事</h1>
       </div>
@@ -33,7 +33,7 @@ const MicrocmsPage = async () => {
           ブログ記事をもっとみる
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
