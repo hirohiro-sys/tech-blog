@@ -1,32 +1,18 @@
-'use client'; 
-
-import { useEffect, useState } from 'react';
-// import MicrocmsPage from "./components/microcmsPage";
+import { headers } from 'next/headers';
 import QiitaPage from "./components/qiitaPage";
+import MicrocmsPage from './components/microcmsPage';
 
-export default function Page() {
-  const [data, setData] = useState([]); 
+export default async function Page() {
+  const headersList = headers();
+  const host = headersList.get('host');
 
-  useEffect(() => {
-    // データを取得する関数
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/qiita', { cache: "no-store" });
-        const result = await res.json();
-        setData(result); // データを状態にセット
-      } catch (error) {
-        console.error('データ取得エラー:', error);
-      }
-    };
-
-    fetchData(); // useEffect内でデータをフェッチ
-  }, []); // 空の依存配列で初回レンダリング時のみ実行
+  const res = await fetch(`http://${host}/api/qiita`, { cache: "no-store" });
+  const data = await res.json();
 
   return (
     <div className="px-5 py-5">
-      {/* 取得したデータをQiitaPageに渡す */}
       <QiitaPage data={data} />
-      {/* <MicrocmsPage /> */}
+      <MicrocmsPage />
     </div>
   );
 }
