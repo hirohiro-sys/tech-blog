@@ -1,25 +1,20 @@
-# Next.js + Turbopack
+# テックブログ
+QiitaとMicroCMSから記事を取得しているテックブログサイトです。
 
-This example allows you to get started with `next dev --turbo` quicky.
+![スクリーンショット 2024-10-09 21.59.12.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3279945/62c587a8-1274-09db-4866-e34d581dc9cf.png)
 
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-turbopack&project-name=with-turbopack&repository-name=with-turbopack)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-turbopack with-turbopack-app
+# 環境設定
+プロジェクトのルートディレクトリに .env.local ファイルを作成し、以下のように環境変数を設定します。
+```env
+API_KEY="XXXXX"
+SERVICE_DOMAIN="XXXXX"
+QIITA_ACCESS_TOKEN="XXXXX"
 ```
 
-```bash
-yarn create next-app --example with-turbopack with-turbopack-app
+# 起動方法
 ```
-
-```bash
-pnpm create next-app --example with-turbopack with-turbopack-app
+npx create-next-app --ts --example with-turbopack
+cd projectのディレクトリ
+npm install
+npm run dev
 ```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
